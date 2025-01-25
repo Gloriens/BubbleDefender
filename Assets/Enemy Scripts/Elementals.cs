@@ -10,10 +10,19 @@ public class Elementals : MonoBehaviour
     private float gravity = -9.81f; // Yerçekimi
     private Rigidbody2D rb; // Rigidbody2D bileşeni
 
-    private bool JUMP= false; // Zıplama kontrolü
+    private bool JUMP= false; 
+    
+    private GameObject bubble;
+    private Bubble bubbleScript;// Zıplama kontrolü
 
     void Start()
     {
+        bubble = GameObject.Find("Bubble");
+        if (bubble == null)
+        {
+            
+        }
+        bubbleScript = bubble.GetComponent<Bubble>();
         // Rigidbody2D bileşenini al
         rb = GetComponent<Rigidbody2D>();
     }

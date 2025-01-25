@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class CharacterController2D : MonoBehaviour
+public class CharacterControl : MonoBehaviour
 {
     public Animator animator;
     public float raycastLength = 1.5f; // Raycast uzunluğu
@@ -13,23 +14,25 @@ public class CharacterController2D : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D col;
     public AnimatorOverrideController[] skinControllers;
-    private int currentSkinIndex = 0;
+    public int currentSkinIndex;
 
     private bool isGrounded;
     private bool isAttacking;
     private float attackTime;
+    public LayerMask enemyLayers;
+    public GameObject weapon;
 
     void Start()
     {
+        currentSkinIndex = 5;
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
 
         SetSkin(currentSkinIndex);
     }
 
-    void Update()
+    private void Update()
     {
-        // Yatay hareket kontrolü
         float horizontal = Input.GetAxis("Horizontal");
         float verticalSpeed = rb.velocity.y;
 
@@ -37,9 +40,13 @@ public class CharacterController2D : MonoBehaviour
         MoveCharacter(horizontal);
 
         // Zıplama kontrolü
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        if (isGrounded)
         {
-            Jump();
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                Jump();
+            }
+            
         }
 
         var isFalling = verticalSpeed < fallThreshold;
@@ -56,18 +63,11 @@ public class CharacterController2D : MonoBehaviour
         }
         
         // Saldırı kontrolü (Ctrl veya C tuşu)
-        if (Input.GetKeyDown(KeyCode.LeftControl) && !isAttacking)
-        {
-            Attack();
-        }
+        attackControl();
         
-        // P tuşuna basıldığında skin'i değiştir
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            // Skin index'ini değiştir
-            currentSkinIndex = (currentSkinIndex + 1) % skinControllers.Length;
-            SetSkin(currentSkinIndex);
-        }
+
+        
+       
         
         // Saldırı durumu sonrası geçiş
         if (isAttacking && Time.time - attackTime > attackDuration)
@@ -100,6 +100,8 @@ public class CharacterController2D : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Dikey hız değişir
         isGrounded = false;  // Zıplama başladığında yerle teması kaybettik
     }
+    
+    
 
     // Düşüş durumu kontrolü
     private void SetFallingState(bool isFalling)
@@ -140,12 +142,7 @@ public class CharacterController2D : MonoBehaviour
     }
 
     // Karakterin saldırısını başlat
-    private void Attack()
-    {
-        isAttacking = true;
-        attackTime = Time.time;
-        animator.SetBool("isAttacking", true); // Saldırı animasyonunu başlat
-    }
+    
 
     // Yerde mi olduğunu kontrol et
     private void OnCollisionStay2D(Collision2D collision)
@@ -162,8 +159,72 @@ public class CharacterController2D : MonoBehaviour
     // Skin'i değiştir
     public void SetSkin(int skinIndex)
     {
-        if (skinIndex < 0 || skinIndex >= skinControllers.Length) return;
+        currentSkinIndex = skinIndex;
         
-        animator.runtimeAnimatorController = skinControllers[skinIndex];
+        animator.runtimeAnimatorController = skinControllers[currentSkinIndex];
     }
+    
+    
+    private void Attack()
+    {
+        Debug.Log(currentSkinIndex);
+        isAttacking = true;
+        attackTime = Time.time;
+        animator.SetBool("isAttacking", true); 
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(weapon.transform.position, 2f, enemyLayers);
+        int tempindex = currentSkinIndex;
+
+        foreach (Collider2D enemy in enemies)
+        {
+            
+            if (enemy.gameObject.CompareTag("darkness") && tempindex == 2)
+            {
+                Debug.Log("ışıkla kestim");
+                Destroy(enemy.gameObject);
+                Debug.Log(currentSkinIndex);
+            }else if (enemy.gameObject.CompareTag("light") && tempindex == 0)
+            {
+                Debug.Log("karanlıkla kestim");
+                Destroy(enemy.gameObject);
+                Debug.Log(currentSkinIndex);
+                
+            }else if (enemy.gameObject.CompareTag("fire") && tempindex == 5)
+            {
+                Debug.Log("suyla kestim");
+                Destroy(enemy.gameObject);
+                Debug.Log(currentSkinIndex);
+            }else if(enemy.gameObject.CompareTag("water") && tempindex == 4)
+            {
+                Debug.Log("ateşle kestim");
+                Destroy(enemy.gameObject);
+                Debug.Log(currentSkinIndex);
+            }else if (enemy.gameObject.CompareTag("earth") && tempindex == 1)
+            {
+                Debug.Log("havayla kestim");
+                Destroy(enemy.gameObject);
+                Debug.Log(currentSkinIndex);
+            }else if (enemy.gameObject.CompareTag("air") && tempindex == 3)
+            {
+                Debug.Log("toprakla kestim");
+                Destroy(enemy.gameObject);
+                Debug.Log(currentSkinIndex);
+            }
+        }
+        Debug.Log("Bi bok mu yedim" + currentSkinIndex);
+    }
+
+    public void attackControl()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
+        {
+            Attack();
+        }
+    }
+    
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(weapon.transform.position, 2f);
+    }
+
+    
 }

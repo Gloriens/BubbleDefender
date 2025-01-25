@@ -7,11 +7,12 @@ public class Bubble : MonoBehaviour
 {
     [SerializeField] private int health;
     private int counter;
+   
     
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -19,23 +20,23 @@ public class Bubble : MonoBehaviour
     {
         
     }
+    
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("air"))
+        
+        if (other.gameObject.CompareTag(gameObject.tag))
         {
-            Debug.Log("I am air");
+            Debug.Log("We are the same element!");
             counter++;
-            if (health == 5)
+            if (counter == 5)
             {
                 Debug.Log("You won the game");
             }
             
-        }
-        else
+        }else if (other.CompareTag("Player")!)
         {
-            takeDamage();
-            Destroy(other.gameObject);
+            Debug.Log("girdi");
         }
     }
 
