@@ -1,13 +1,17 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class CharacterController2D : MonoBehaviour
 {
     public Animator animator;
+    public float raycastLength = 1.5f; // Raycast uzunluğu
     public float moveSpeed = 5f;  // Yatay hareket hızı
     public float jumpForce = 10f; // Zıplama gücü
     public float fallThreshold = -1f; // Düşüşe geçiş için threshold
     public float attackDuration = 0.5f; // Saldırı süresi
     private Rigidbody2D rb;
+    private Collider2D col;
     public AnimatorOverrideController[] skinControllers;
     private int currentSkinIndex = 0;
 
@@ -18,6 +22,8 @@ public class CharacterController2D : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
+
         SetSkin(currentSkinIndex);
     }
 
@@ -43,6 +49,11 @@ public class CharacterController2D : MonoBehaviour
 
         // Animasyon parametrelerini güncelle
         UpdateAnimator(isFalling, horizontal, verticalSpeed);
+        
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            CheckAndDescend();
+        }
         
         // Saldırı kontrolü (Ctrl veya C tuşu)
         if (Input.GetKeyDown(KeyCode.LeftControl) && !isAttacking)
@@ -105,8 +116,27 @@ public class CharacterController2D : MonoBehaviour
         animator.SetBool("isRunning", isRunning);
         animator.SetBool("isJumping", isJumping);
         animator.SetFloat("horizontalSpeed", Mathf.Abs(horizontal)); // Koşma hızını gönder
+    }
+    
+    void CheckAndDescend()
+    {
+        Vector2 bottomOfPlayer = new Vector2(transform.position.x, col.bounds.min.y - 0.1f);
+        
+        RaycastHit2D hit = Physics2D.Raycast(bottomOfPlayer, Vector2.down, raycastLength);
 
-        // İleri geri gitme kontrolü
+        if (hit.collider != null && hit.collider.CompareTag("Platform"))
+        {
+            StartCoroutine(Descend());
+        }
+    }
+
+    IEnumerator Descend()
+    {
+        col.isTrigger = true;
+        
+        yield return new WaitForSeconds(0.5f);
+        
+        col.isTrigger = false;
     }
 
     // Karakterin saldırısını başlat
@@ -133,16 +163,7 @@ public class CharacterController2D : MonoBehaviour
     public void SetSkin(int skinIndex)
     {
         if (skinIndex < 0 || skinIndex >= skinControllers.Length) return;
-
-        animator.runtimeAnimatorController = null;
-
-        // AnimatorController'ı sıfırlayın
-        animator.speed = 1f;
-
-        // TimeScale'ı da sıfırlayın
-        Time.timeScale = 1f;
-
-        // Yeni skin'i set et
+        
         animator.runtimeAnimatorController = skinControllers[skinIndex];
     }
 }
