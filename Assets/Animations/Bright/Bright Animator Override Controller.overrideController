@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Bright Animator Override Controller
+  m_Controller: {fileID: 9100000, guid: f0a2cf84147230f4a9229f0e442a631b, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 333ae0434f3b5ad4f929fc84bed770b8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e519128bb58483e4fb7ad98433811e56, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6bc50c5839de4dd4489b55f2ae81f205, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 60b35004337c0f245a80f5ee20a7c215, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e810005cb8546324e9b127702ef20bca, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e4747dc74779c104a8c54aff8f5186e9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 27528e35203e8f949a9bcc49c558458f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 19d7ae224bae1f44e8e90cfbc1427e27, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ecfa57a446531544a9f7821367f79593, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 39300bf316e671549b8bf292fa21cbc4, type: 2}
