@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &61685432651021551
+--- !u!1 &2240124751324376586
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2163824956693211962}
-  - component: {fileID: 3631237636209909827}
+  - component: {fileID: 4554252179147333727}
+  - component: {fileID: 1202778315395879715}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: BubbleTrigger
@@ -17,28 +17,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2163824956693211962
+--- !u!4 &4554252179147333727
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 61685432651021551}
+  m_GameObject: {fileID: 2240124751324376586}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.609, y: 0, z: 0}
-  m_LocalScale: {x: 0.04728025, y: 0.04728025, z: 0.04728025}
+  m_LocalPosition: {x: 0.898, y: 0.155, z: 0}
+  m_LocalScale: {x: 0.10241059, y: 0.10745881, z: 0.04728025}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 255544607856467608}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &3631237636209909827
+--- !u!61 &1202778315395879715
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 61685432651021551}
+  m_GameObject: {fileID: 2240124751324376586}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -64,7 +64,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1520114, y: 4.0321655}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.370851, y: 17.502647}
+  m_Size: {x: 1.21, y: 16.44}
   m_EdgeRadius: 0
 --- !u!1 &4716834883212758214
 GameObject:
@@ -88,8 +88,9 @@ GameObject:
   - component: {fileID: 255544607856467608}
   - component: {fileID: 2760131743416957668}
   - component: {fileID: 8422540176814545812}
+  - component: {fileID: 4253210453828795591}
   m_Layer: 0
-  m_Name: Bubble
+  m_Name: Water Bubble
   m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,11 +105,11 @@ Transform:
   m_GameObject: {fileID: 4716834883212758214}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.17, y: 1.38, z: 0}
-  m_LocalScale: {x: 21.150482, y: 21.150482, z: 21.150482}
+  m_LocalPosition: {x: -8.07, y: 3.74, z: 0}
+  m_LocalScale: {x: 9.764615, y: 9.305892, z: 21.150482}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2163824956693211962}
+  - {fileID: 4554252179147333727}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2760131743416957668
@@ -152,7 +153,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8f3dfd9cde03c9247aaba606ad7abd82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -197,4 +198,17 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.53
+  m_Radius: 0.8
+--- !u!114 &4253210453828795591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4716834883212758214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c52d77418b5e7954a8d746b14692476f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0

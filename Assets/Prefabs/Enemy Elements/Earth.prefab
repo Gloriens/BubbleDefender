@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: -3280379983257187551}
   - component: {fileID: -2182093449999273503}
   - component: {fileID: 756063261208995315}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Earth
-  m_TagString: air
+  m_TagString: earth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

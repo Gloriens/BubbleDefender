@@ -110,16 +110,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawners:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1367503191817069756}
+  - {fileID: 3228015240642411043}
+  - {fileID: 1046136673175729299}
   elementals:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6077005402519728311, guid: 0d9924d81af6a8c4bbd71429427ea25d, type: 3}
+  - {fileID: 6077005402519728311, guid: d23dcba39913cd34e8f95ec5a03ce6d1, type: 3}
+  - {fileID: 6077005402519728311, guid: d763c219ee48a9447a258f98ab2a12bd, type: 3}
+  - {fileID: 6077005402519728311, guid: a475b7aa5b24b284f884b4d1a2335caa, type: 3}
+  - {fileID: 6077005402519728311, guid: 763ff2b2caaa6ca4eb8d8ca2da915e3e, type: 3}
+  - {fileID: 6077005402519728311, guid: 0bd096adba9f6c14b9589605517065c2, type: 3}
 --- !u!1 &3228015240642411043
 GameObject:
   m_ObjectHideFlags: 0
