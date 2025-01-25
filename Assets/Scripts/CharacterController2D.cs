@@ -134,14 +134,6 @@ public class CharacterController2D : MonoBehaviour
     {
         if (skinIndex < 0 || skinIndex >= skinControllers.Length) return;
 
-        animator.runtimeAnimatorController = null;
-
-        // AnimatorController'ı sıfırlayın
-        animator.speed = 1f;
-
-        // TimeScale'ı da sıfırlayın
-        Time.timeScale = 1f;
-
         // Yeni skin'i set et
         animator.runtimeAnimatorController = skinControllers[skinIndex];
     }
