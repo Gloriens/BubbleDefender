@@ -12,6 +12,7 @@ TagManager:
   - darkness
   - Ground
   - BubbleTrigger
+  - Bubble
   layers:
   - Default
   - TransparentFX
