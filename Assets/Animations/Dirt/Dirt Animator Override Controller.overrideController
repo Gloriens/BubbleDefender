@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dirt Animator Override Controller
+  m_Controller: {fileID: 9100000, guid: f0a2cf84147230f4a9229f0e442a631b, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 333ae0434f3b5ad4f929fc84bed770b8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f090c79e97b09f04199344e9382da305, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6bc50c5839de4dd4489b55f2ae81f205, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a124b83284da78148aea044372eddd8f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e810005cb8546324e9b127702ef20bca, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4b393d26fa75c014c99e56aa67f670ed, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 27528e35203e8f949a9bcc49c558458f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 433237fe68e7e104aa8c12e16f29a9e5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ecfa57a446531544a9f7821367f79593, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e3f1bf4710106a941bd3d91949b2b3ae, type: 2}
