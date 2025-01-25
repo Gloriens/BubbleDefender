@@ -20,7 +20,7 @@ public class Elementals : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(-moveSpeed, rb.velocity.y); // Yalnızca X ekseninde hareket ettir
+        transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
     }
 
     void OnTriggerEnter2D(Collider2D other)
