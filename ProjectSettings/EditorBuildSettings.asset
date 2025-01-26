@@ -5,28 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/AirScene.unity
-    guid: b0769f187b9d2d2488c8ac95bb054da5
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 0
-    path: Assets/Scenes/DarknessScene.unity
-    guid: 731810f91b0d7e24cbb45c437c321a81
-  - enabled: 0
-    path: Assets/Scenes/EarthScene.unity
-    guid: 13a852050e7e9cc44979557508ff067c
-  - enabled: 0
-    path: Assets/Scenes/FireScene.unity
-    guid: ebcf45869532ab74390531d9133985ec
-  - enabled: 0
-    path: Assets/Scenes/LightScene.unity
-    guid: 66627b820e42c0d458c33f218a72f3c6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 47acc154e7e142f4ea61418b4081f286
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/AirScene.unity
+    guid: b0769f187b9d2d2488c8ac95bb054da5
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/DarknessScene.unity
+    guid: 731810f91b0d7e24cbb45c437c321a81
+  - enabled: 1
+    path: Assets/Scenes/EarthScene.unity
+    guid: 13a852050e7e9cc44979557508ff067c
+  - enabled: 1
+    path: Assets/Scenes/FireScene.unity
+    guid: ebcf45869532ab74390531d9133985ec
+  - enabled: 1
+    path: Assets/Scenes/LightScene.unity
+    guid: 66627b820e42c0d458c33f218a72f3c6
+  - enabled: 1
     path: Assets/Scenes/WaterScene.unity
     guid: 8e32603cc827a314b9aa5c286c6686ec
   m_configObjects: {}

@@ -26,6 +26,7 @@ public class Bubble : MonoBehaviour
             Debug.Log("We are the same element!");
             health++;
             animator.SetInteger("health", health);
+            StartCoroutine(DestroyAfterTime(other.gameObject));
 
             
             
@@ -34,13 +35,13 @@ public class Bubble : MonoBehaviour
         {
             if (!other.gameObject.CompareTag("Player"))
             {
-                health--;
                 Animator anim = other.gameObject.GetComponent<Animator>();
                 anim.SetTrigger("isDestroyed");
                 StartCoroutine(DestroyAfterTime(other.gameObject));
+                TakeDamage();
                 
             }
-            TakeDamage();
+            
         }
     }
 
@@ -53,8 +54,8 @@ public class Bubble : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log("Bubble destroyed!");
-            Destroy(gameObject, 2f); 
-            Time.timeScale = 0f;
+            StartCoroutine(waitpls());
+
         }
     }
 
@@ -70,5 +71,12 @@ public class Bubble : MonoBehaviour
     
         // Destroy the object after the delay
         Destroy(obj);
+    }
+
+
+    IEnumerator waitpls()
+    {
+        yield return new WaitForSeconds(1.9f);
+        Time.timeScale = 0f;
     }
 }
