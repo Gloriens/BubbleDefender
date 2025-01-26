@@ -790,9 +790,25 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4253210453828795591, guid: 33606817d62b809468b8ea68ae3e202d, type: 3}
+      propertyPath: health
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4716834883212758214, guid: 33606817d62b809468b8ea68ae3e202d, type: 3}
       propertyPath: m_Name
       value: Bubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422540176814545812, guid: 33606817d62b809468b8ea68ae3e202d, type: 3}
+      propertyPath: m_Radius
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422540176814545812, guid: 33606817d62b809468b8ea68ae3e202d, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422540176814545812, guid: 33606817d62b809468b8ea68ae3e202d, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

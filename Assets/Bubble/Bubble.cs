@@ -26,14 +26,20 @@ public class Bubble : MonoBehaviour
             Debug.Log("We are the same element!");
             health++;
             animator.SetInteger("health", health);
+
             
-            if (counter == 10) 
-            {
-                Debug.Log("You won the game!");
-            }
+            
         }
         else
         {
+            if (!other.gameObject.CompareTag("Player"))
+            {
+                health--;
+                Animator anim = other.gameObject.GetComponent<Animator>();
+                anim.SetTrigger("isDestroyed");
+                StartCoroutine(DestroyAfterTime(other.gameObject));
+                
+            }
             TakeDamage();
         }
     }
@@ -54,5 +60,14 @@ public class Bubble : MonoBehaviour
     private void UpdateAnimationState()
     {
         animator.SetInteger("health", health); // Animator parametresini sürekli güncelle
+    }
+    
+    private IEnumerator DestroyAfterTime(GameObject obj)
+    {
+        // Wait for 0.8 seconds
+        yield return new WaitForSeconds(1f);
+    
+        // Destroy the object after the delay
+        Destroy(obj);
     }
 }
