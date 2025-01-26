@@ -54,6 +54,7 @@ public class Bubble : MonoBehaviour
         {
             Debug.Log("Bubble destroyed!");
             Destroy(gameObject, 2f); 
+            Time.timeScale = 0f;
         }
     }
 
