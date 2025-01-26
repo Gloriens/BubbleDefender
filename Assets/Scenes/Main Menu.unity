@@ -207,7 +207,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1050814258}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: Airloader
+        m_MethodName: AirLoader
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -340,7 +340,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1050814258}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: Lightloader
+        m_MethodName: LightLoader
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -609,7 +609,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1050814258}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: Waterloader
+        m_MethodName: WaterLoader
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -979,7 +979,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1050814258}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: Darknessloader
+        m_MethodName: DarknessLoader
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1671,7 +1671,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1050814258}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: Earthloader
+        m_MethodName: EarthLoader
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1938,7 +1938,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1050814258}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: Fireloader
+        m_MethodName: FireLoader
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

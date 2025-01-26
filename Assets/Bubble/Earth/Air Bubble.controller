@@ -7,7 +7,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 4
+    m_ConditionEvent: health
+    m_EventTreshold: 6
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6588400706903546293}
   m_Solo: 0
@@ -55,7 +58,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 6
+    m_ConditionEvent: health
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6385071656699169916}
   m_Solo: 0
@@ -77,7 +83,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 4
+    m_ConditionEvent: health
+    m_EventTreshold: 4
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7827689147094711285}
   m_Solo: 0
@@ -99,7 +108,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 4
+    m_ConditionEvent: health
+    m_EventTreshold: 8
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1510716339551293829}
   m_Solo: 0
@@ -121,7 +133,13 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 3
+    m_ConditionEvent: health
+    m_EventTreshold: 4
+  - m_ConditionMode: 6
+    m_ConditionEvent: health
+    m_EventTreshold: 4
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6588400706903546293}
   m_Solo: 0
@@ -144,7 +162,13 @@ AnimatorController:
   m_PrefabAsset: {fileID: 0}
   m_Name: Air Bubble
   serializedVersion: 5
-  m_AnimatorParameters: []
+  m_AnimatorParameters:
+  - m_Name: health
+    m_Type: 3
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -193,7 +217,13 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 3
+    m_ConditionEvent: health
+    m_EventTreshold: 8
+  - m_ConditionMode: 6
+    m_ConditionEvent: health
+    m_EventTreshold: 8
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5174610362872569561}
   m_Solo: 0
@@ -276,7 +306,13 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 3
+    m_ConditionEvent: health
+    m_EventTreshold: 6
+  - m_ConditionMode: 6
+    m_ConditionEvent: health
+    m_EventTreshold: 6
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1510716339551293829}
   m_Solo: 0

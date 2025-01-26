@@ -1,45 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    
-    
-    void Start()
+    public void MainMenuLoader()
     {
-        
+        SceneManager.LoadScene("Main Menu");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
-    
-    public void Airloader()
+    public void AirLoader()
     {
         SceneManager.LoadScene("AirScene");
     }
-    public void Earthloader()
+
+    public void EarthLoader()
     {
         SceneManager.LoadScene("EarthScene");
     }
-    public void Darknessloader()
+
+    public void DarknessLoader()
     {
         SceneManager.LoadScene("DarknessScene");
     }
-    public void Lightloader()
+
+    public void LightLoader()
     {
         SceneManager.LoadScene("LightScene");
     }
-    public void Waterloader()
+
+    public void WaterLoader()
     {
         SceneManager.LoadScene("WaterScene");
     }
-    public void Fireloader()
+
+    public void FireLoader()
     {
         SceneManager.LoadScene("FireScene");
     }

@@ -6,11 +6,13 @@ public class Bubble : MonoBehaviour
 {
     [SerializeField] private int health; 
     private int counter = 0;
-    private Animator animator; 
+    private Animator animator;
+    private SceneLoader sceneLoader;
     
     void Start()
     {
         animator = GetComponent<Animator>(); 
+        sceneLoader = GetComponent<SceneLoader>();
         animator.SetInteger("health", health); // Başlangıçta health değerini eşitle
     }
 
@@ -54,7 +56,7 @@ public class Bubble : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log("Bubble destroyed!");
-            StartCoroutine(waitpls());
+            StartCoroutine(GameOver());
 
         }
     }
@@ -67,16 +69,16 @@ public class Bubble : MonoBehaviour
     private IEnumerator DestroyAfterTime(GameObject obj)
     {
         // Wait for 0.8 seconds
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
     
         // Destroy the object after the delay
         Destroy(obj);
     }
 
 
-    IEnumerator waitpls()
+    IEnumerator GameOver()
     {
         yield return new WaitForSeconds(1.9f);
-        Time.timeScale = 0f;
+        sceneLoader.MainMenuLoader();
     }
 }
