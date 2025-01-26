@@ -1,52 +1,70 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bubble : MonoBehaviour
 {
-    [SerializeField] private int health;
-    private int counter;
-   
+    [SerializeField] private int health = 10; 
+    private int counter = 0;
+    private Animator animator; 
     
-    // Start is called before the first frame update
+    
     void Start()
     {
-       
+        animator = GetComponent<Animator>(); 
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+        UpdateAnimationState();
     }
-    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
         if (other.gameObject.CompareTag(gameObject.tag))
         {
             Debug.Log("We are the same element!");
             counter++;
-            if (counter == 5)
-            {
-                Debug.Log("You won the game");
-            }
             
-        }else if (other.CompareTag("Player")!)
-        {
-            Debug.Log("girdi");
+            if (counter == 10) 
+            {
+                animator.SetTrigger("Happy");
+                Debug.Log("You won the game!");
+            }
         }
     }
 
-    public void takeDamage()
+    public void TakeDamage()
     {
         health--;
-        Debug.Log(health);
-        if (health == 0)
+        Debug.Log("Health: " + health);
+
+        if (health <= 0)
         {
-            Destroy(gameObject);
+            Debug.Log("Bubble destroyed!");
+            animator.SetTrigger("Death");
+            Destroy(gameObject, 1f); 
+        }
+    }
+
+    private void UpdateAnimationState()
+    {
+        if (health <= 2)
+        {
+            animator.SetTrigger("Death");
+        }
+        else if (health <= 4)
+        {
+            animator.SetTrigger("Cry");
+        }
+        else if (health <= 6)
+        {
+            animator.SetTrigger("Sad");
+        }
+        else if (health <= 8)
+        {
+            animator.SetTrigger("Idle");
         }
     }
 }
