@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Bubble : MonoBehaviour
 {
-    [SerializeField] private int health = 10; 
+    [SerializeField] private int health; 
     private int counter = 0;
     private Animator animator; 
-    
     
     void Start()
     {
         animator = GetComponent<Animator>(); 
+        animator.SetInteger("health", health); // Başlangıçta health değerini eşitle
     }
-
 
     void Update()
     {
@@ -25,13 +24,17 @@ public class Bubble : MonoBehaviour
         if (other.gameObject.CompareTag(gameObject.tag))
         {
             Debug.Log("We are the same element!");
-            counter++;
+            health++;
+            animator.SetInteger("health", health);
             
             if (counter == 10) 
             {
-                animator.SetTrigger("Happy");
                 Debug.Log("You won the game!");
             }
+        }
+        else
+        {
+            TakeDamage();
         }
     }
 
@@ -39,32 +42,17 @@ public class Bubble : MonoBehaviour
     {
         health--;
         Debug.Log("Health: " + health);
+        animator.SetInteger("health", health); // Animator'daki health güncelleniyor
 
         if (health <= 0)
         {
             Debug.Log("Bubble destroyed!");
-            animator.SetTrigger("Death");
-            Destroy(gameObject, 1f); 
+            Destroy(gameObject, 2f); 
         }
     }
 
     private void UpdateAnimationState()
     {
-        if (health <= 2)
-        {
-            animator.SetTrigger("Death");
-        }
-        else if (health <= 4)
-        {
-            animator.SetTrigger("Cry");
-        }
-        else if (health <= 6)
-        {
-            animator.SetTrigger("Sad");
-        }
-        else if (health <= 8)
-        {
-            animator.SetTrigger("Idle");
-        }
+        animator.SetInteger("health", health); // Animator parametresini sürekli güncelle
     }
 }
