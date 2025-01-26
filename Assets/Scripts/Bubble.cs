@@ -62,7 +62,7 @@ public class Bubble : MonoBehaviour
     private IEnumerator DestroyAfterTime(GameObject obj)
     {
         // Wait for 0.8 seconds
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         // Destroy the object after the delay
         Destroy(obj);
@@ -71,7 +71,7 @@ public class Bubble : MonoBehaviour
 
     private IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(1.9f);
+        yield return new WaitForSeconds(2.5f);
         sceneLoader.MainMenuLoader();
     }
 }
