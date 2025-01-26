@@ -56,7 +56,9 @@ public class CharacterControl : MonoBehaviour
         // Animasyon parametrelerini güncelle
         UpdateAnimator(isFalling, horizontal, verticalSpeed);
 
-        if (Input.GetKeyDown(KeyCode.S)) CheckAndDescend();
+        if (isGrounded)
+            if (Input.GetKeyDown(KeyCode.S))
+                CheckAndDescend();
 
         // Saldırı kontrolü (Ctrl veya C tuşu)
         attackControl();
@@ -67,18 +69,15 @@ public class CharacterControl : MonoBehaviour
             isAttacking = false;
             animator.SetBool("isAttacking", false); // Attack bitince
         }
-        
-        string[] tags = {"darkness", "light", "fire", "water", "earth", "air"};
+
+        string[] tags = { "darkness", "light", "fire", "water", "earth", "air" };
         foreach (var t in tags)
         {
             var enemies = GameObject.FindGameObjectsWithTag(t);
             foreach (var enemy in enemies)
             {
-                Collider2D enemyCollider = enemy.GetComponent<Collider2D>();
-                if (enemyCollider != null)
-                {
-                    Physics2D.IgnoreCollision(col, enemyCollider, true); // Ignore collision
-                }
+                var enemyCollider = enemy.GetComponent<Collider2D>();
+                if (enemyCollider != null) Physics2D.IgnoreCollision(col, enemyCollider, true); // Ignore collision
             }
         }
     }
@@ -175,7 +174,6 @@ public class CharacterControl : MonoBehaviour
         var tempindex = currentSkinIndex;
 
         foreach (var enemy in enemies)
-        {
             if (enemy.gameObject.CompareTag("darkness") && tempindex == 2)
             {
                 Debug.Log("ışıkla kestim");
@@ -230,7 +228,6 @@ public class CharacterControl : MonoBehaviour
                 //Destroy(enemy.gameObject);
                 Debug.Log(currentSkinIndex);
             }
-        }
 
         Debug.Log("Bi bok mu yedim" + currentSkinIndex);
     }

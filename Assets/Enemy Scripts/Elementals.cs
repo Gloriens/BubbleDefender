@@ -1,27 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Elementals : MonoBehaviour
 {
-    private float moveSpeed = 5f; // Hareket hızı
-    private float jumpForce = 10f; // Zıplama kuvveti
+    private GameObject bubble;
+    private Bubble bubbleScript; // Zıplama kontrolü
     private float gravity = -9.81f; // Yerçekimi
+
+    private bool JUMP = false;
+    private readonly float jumpForce = 10f; // Zıplama kuvveti
+    private readonly float moveSpeed = 5f; // Hareket hızı
     private Rigidbody2D rb; // Rigidbody2D bileşeni
 
-    private bool JUMP= false; 
-    
-    private GameObject bubble;
-    private Bubble bubbleScript;// Zıplama kontrolü
-
-    void Start()
+    private void Start()
     {
         bubble = GameObject.Find("Bubble");
         if (bubble == null)
         {
-            
         }
+
         bubbleScript = bubble.GetComponent<Bubble>();
         // Rigidbody2D bileşenini al
         rb = GetComponent<Rigidbody2D>();
@@ -32,14 +28,8 @@ public class Elementals : MonoBehaviour
         transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("BubbleTrigger"))
-        {
-
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-           
-        }
+        if (other.CompareTag("BubbleTrigger")) rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
-    
 }

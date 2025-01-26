@@ -1,22 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bubble : MonoBehaviour
 {
-    [SerializeField] private int health; 
-    private int counter = 0;
+    [SerializeField] private int health;
     private Animator animator;
+    private int counter = 0;
     private SceneLoader sceneLoader;
-    
-    void Start()
+
+    private void Start()
     {
-        animator = GetComponent<Animator>(); 
+        animator = GetComponent<Animator>();
         sceneLoader = GetComponent<SceneLoader>();
         animator.SetInteger("health", health); // Başlangıçta health değerini eşitle
     }
 
-    void Update()
+    private void Update()
     {
         UpdateAnimationState();
     }
@@ -29,21 +28,16 @@ public class Bubble : MonoBehaviour
             health++;
             animator.SetInteger("health", health);
             StartCoroutine(DestroyAfterTime(other.gameObject));
-
-            
-            
         }
         else
         {
             if (!other.gameObject.CompareTag("Player"))
             {
-                Animator anim = other.gameObject.GetComponent<Animator>();
+                var anim = other.gameObject.GetComponent<Animator>();
                 anim.SetTrigger("isDestroyed");
                 StartCoroutine(DestroyAfterTime(other.gameObject));
                 TakeDamage();
-                
             }
-            
         }
     }
 
@@ -57,7 +51,6 @@ public class Bubble : MonoBehaviour
         {
             Debug.Log("Bubble destroyed!");
             StartCoroutine(GameOver());
-
         }
     }
 
@@ -65,18 +58,18 @@ public class Bubble : MonoBehaviour
     {
         animator.SetInteger("health", health); // Animator parametresini sürekli güncelle
     }
-    
+
     private IEnumerator DestroyAfterTime(GameObject obj)
     {
         // Wait for 0.8 seconds
         yield return new WaitForSeconds(0.5f);
-    
+
         // Destroy the object after the delay
         Destroy(obj);
     }
 
 
-    IEnumerator GameOver()
+    private IEnumerator GameOver()
     {
         yield return new WaitForSeconds(1.9f);
         sceneLoader.MainMenuLoader();
