@@ -15,6 +15,12 @@ public class CharacterControl : MonoBehaviour
     private Collider2D col;
     public AnimatorOverrideController[] skinControllers;
     public int currentSkinIndex;
+    private Animator darknessAnimator;
+    private Animator lightAnimator;
+    private Animator fireAnimator;
+    private Animator waterAnimator;
+    private Animator airAnimator;
+    private Animator earthAnimator;
 
     private bool isGrounded;
     private bool isAttacking;
@@ -180,37 +186,65 @@ public class CharacterControl : MonoBehaviour
             if (enemy.gameObject.CompareTag("darkness") && tempindex == 2)
             {
                 Debug.Log("ışıkla kestim");
-                Destroy(enemy.gameObject);
+                darknessAnimator = enemy.gameObject.GetComponent<Animator>();
+                darknessAnimator.SetTrigger("isDestroyed");
+                StartCoroutine(DestroyAfterTime(enemy.gameObject));
+                //Destroy(enemy.gameObject);
                 Debug.Log(currentSkinIndex);
+              
             }else if (enemy.gameObject.CompareTag("light") && tempindex == 0)
             {
                 Debug.Log("karanlıkla kestim");
-                Destroy(enemy.gameObject);
+                lightAnimator = enemy.gameObject.GetComponent<Animator>();
+                lightAnimator.SetTrigger("isDestroyed");
+                StartCoroutine(DestroyAfterTime(enemy.gameObject));
+                //Destroy(enemy.gameObject);
                 Debug.Log(currentSkinIndex);
                 
             }else if (enemy.gameObject.CompareTag("fire") && tempindex == 5)
             {
                 Debug.Log("suyla kestim");
-                Destroy(enemy.gameObject);
+                fireAnimator = enemy.gameObject.GetComponent<Animator>();
+                fireAnimator.SetTrigger("isDestroyed");
+                StartCoroutine(DestroyAfterTime(enemy.gameObject));
+                //Destroy(enemy.gameObject);
                 Debug.Log(currentSkinIndex);
             }else if(enemy.gameObject.CompareTag("water") && tempindex == 4)
             {
                 Debug.Log("ateşle kestim");
-                Destroy(enemy.gameObject);
+                waterAnimator = enemy.gameObject.GetComponent<Animator>();
+                waterAnimator.SetTrigger("isDestroyed");
+                StartCoroutine(DestroyAfterTime(enemy.gameObject));
+                //Destroy(enemy.gameObject);
                 Debug.Log(currentSkinIndex);
             }else if (enemy.gameObject.CompareTag("earth") && tempindex == 1)
             {
                 Debug.Log("havayla kestim");
-                Destroy(enemy.gameObject);
+                earthAnimator = enemy.gameObject.GetComponent<Animator>();
+                earthAnimator.SetTrigger("isDestroyed");
+                StartCoroutine(DestroyAfterTime(enemy.gameObject));
+                //Destroy(enemy.gameObject);
                 Debug.Log(currentSkinIndex);
             }else if (enemy.gameObject.CompareTag("air") && tempindex == 3)
             {
                 Debug.Log("toprakla kestim");
-                Destroy(enemy.gameObject);
+                airAnimator = enemy.gameObject.GetComponent<Animator>();
+                airAnimator.SetTrigger("isDestroyed");
+                StartCoroutine(DestroyAfterTime(enemy.gameObject));
+                //Destroy(enemy.gameObject);
                 Debug.Log(currentSkinIndex);
             }
         }
         Debug.Log("Bi bok mu yedim" + currentSkinIndex);
+    }
+    
+    private IEnumerator DestroyAfterTime(GameObject obj)
+    {
+        // Wait for 0.8 seconds
+        yield return new WaitForSeconds(1f);
+    
+        // Destroy the object after the delay
+        Destroy(obj);
     }
 
     public void attackControl()
