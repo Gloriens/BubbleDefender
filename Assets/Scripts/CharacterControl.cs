@@ -1,18 +1,21 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterControl : MonoBehaviour
 {
-    public Animator animator;
-    public float raycastLength = 1.2f; // Raycast uzunluğu
-    public float moveSpeed = 5f; // Yatay hareket hızı
-    public float jumpForce = 10f; // Zıplama gücü
-    public float fallThreshold = -1f; // Düşüşe geçiş için threshold
-    public float attackDuration = 0.5f; // Saldırı süresi
-    public AnimatorOverrideController[] skinControllers;
-    public int currentSkinIndex;
-    public LayerMask enemyLayers;
-    public GameObject weapon;
+    [SerializeField] private Animator animator;
+    [SerializeField] private float raycastLength = 1.2f; // Raycast uzunluğu
+    [SerializeField] private float moveSpeed = 5f; // Yatay hareket hızı
+    [SerializeField] private float jumpForce = 10f; // Zıplama gücü
+    [SerializeField] private float fallThreshold = -1f; // Düşüşe geçiş için threshold
+    [SerializeField] private float attackDuration = 0.5f; // Saldırı süresi
+    [SerializeField] private AnimatorOverrideController[] skinControllers;
+    [SerializeField] private int currentSkinIndex;
+    [SerializeField] private LayerMask enemyLayers;
+    [SerializeField] private GameObject weapon;
+    [SerializeField] private AudioClip attacksound;
+    AudioSource audioSource;
     private Animator airAnimator;
     private float attackTime;
     private Collider2D col;
@@ -25,9 +28,11 @@ public class CharacterControl : MonoBehaviour
     private Animator lightAnimator;
     private Rigidbody2D rb;
     private Animator waterAnimator;
+    
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         currentSkinIndex = 5;
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
@@ -43,6 +48,11 @@ public class CharacterControl : MonoBehaviour
         // Karakter hareketi
         MoveCharacter(horizontal);
 
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
         // Zıplama kontrolü
         if (isGrounded)
             if (Input.GetKeyDown(KeyCode.W))
@@ -172,6 +182,7 @@ public class CharacterControl : MonoBehaviour
         animator.SetBool("isAttacking", true);
         var enemies = Physics2D.OverlapCircleAll(weapon.transform.position, 2f, enemyLayers);
         var tempindex = currentSkinIndex;
+        audioSource.Play();
 
         foreach (var enemy in enemies)
             if (enemy.gameObject.CompareTag("darkness") && tempindex == 2)
@@ -243,6 +254,6 @@ public class CharacterControl : MonoBehaviour
 
     public void attackControl()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isAttacking) Attack();
+        if (Input.GetKeyDown(KeyCode.Space) && !isAttacking && isGrounded) Attack();
     }
 }
